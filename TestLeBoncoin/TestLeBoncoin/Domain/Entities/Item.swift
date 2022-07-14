@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Item {
+struct Item: Equatable {
     let id: Int
     let title: String
     let description: String
@@ -15,4 +15,6 @@ struct Item {
     let isUrgent: Bool
     let category: Category
     let image: Data
+    let creationDate: Date
+    let siret: String? = "Siret unavailable"
 }

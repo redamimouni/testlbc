@@ -10,7 +10,7 @@ import XCTest
 
 class ItemListPresenterTests: XCTestCase {
 
-    lazy var presenter: ItemListPresenter = {
+    private lazy var presenter: ItemListPresenter = {
         return ItemListPresenter(useCase: useCase)
     }()
 
@@ -22,7 +22,7 @@ class ItemListPresenterTests: XCTestCase {
     func test_fetchItemList_shouldSuccess() {
         // Given
         var result: [ItemViewModel] = []
-        useCase.mockedResult = .success([Item.mock])
+        useCase.mockedResult = .success(Item.mocks)
         let testParameter = Expectation(
             expectation: expectation) {
                 result = $0
@@ -35,7 +35,10 @@ class ItemListPresenterTests: XCTestCase {
         wait(for: [expectation], timeout: 2)
 
         // Then
-        XCTAssertEqual(result, [ItemViewModel(title: "title", price: "1.2 €", image: UIImage())])
+        XCTAssertEqual(result, [
+            ItemViewModel(title: "title", price: "1.2 €", image: UIImage()),
+            ItemViewModel(title: "second title", price: "4 €", image: UIImage())
+        ])
     }
 
     func test_fetchItemList_shouldFailWithTitleMessage() {
@@ -109,16 +112,4 @@ class ItemListPresenterTests: XCTestCase {
         // Then
         XCTAssertEqual(message, "Domain rule: some category is missing")
     }
-}
-
-extension Item {
-    static let mock = Item(
-        id: 1,
-        title: "title",
-        description: "description",
-        price: 1.2,
-        isUrgent: true,
-        category: Category(id: 1, name: "fdsfs"),
-        image: Data()
-    )
 }

@@ -12,9 +12,20 @@ protocol FetchItemListUseCase {
 }
 
 final class FetchItemListUseCaseImpl: FetchItemListUseCase {
+    private let repository: ItemRepository
+
+    init(repository: ItemRepository) {
+        self.repository = repository
+    }
+
     func execute(completion: @escaping (Result<[Item], DomainError>) -> Void) {
-        completion(.success([
-            Item(id: 1, title: "fdsfds", description: "fsdfds", price: 1.0, isUrgent: true, category: Category(id: 1, name: "fdsfs"), image: Data())
-        ]))
+        repository.fetchItemList { result in
+            switch result {
+            case .success(let items):
+                completion(.success(items))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }

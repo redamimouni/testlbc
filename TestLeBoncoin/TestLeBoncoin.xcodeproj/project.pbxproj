@@ -26,6 +26,12 @@
 		AB80242A288066E900814602 /* Expectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB802429288066E900814602 /* Expectation.swift */; };
 		AB80242C28806E7500814602 /* FetchItemListUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80242B28806E7500814602 /* FetchItemListUseCaseMock.swift */; };
 		AB80242F2880799B00814602 /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80242E2880799B00814602 /* DomainError.swift */; };
+		AB80243228808B8200814602 /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80243128808B8200814602 /* ItemRepository.swift */; };
+		AB80243628808D9900814602 /* ItemRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80243528808D9900814602 /* ItemRepositoryImpl.swift */; };
+		AB8024392880940F00814602 /* FetchItemListUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024382880940F00814602 /* FetchItemListUseCaseTests.swift */; };
+		AB80243D28809AC600814602 /* ItemRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80243C28809AC600814602 /* ItemRepositoryMock.swift */; };
+		AB8024402880B2CA00814602 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80243F2880B2CA00814602 /* Utilities.swift */; };
+		AB8024422880B78D00814602 /* APIEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024412880B78D00814602 /* APIEndPoints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +67,12 @@
 		AB802429288066E900814602 /* Expectation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expectation.swift; sourceTree = "<group>"; };
 		AB80242B28806E7500814602 /* FetchItemListUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchItemListUseCaseMock.swift; sourceTree = "<group>"; };
 		AB80242E2880799B00814602 /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
+		AB80243128808B8200814602 /* ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
+		AB80243528808D9900814602 /* ItemRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepositoryImpl.swift; sourceTree = "<group>"; };
+		AB8024382880940F00814602 /* FetchItemListUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchItemListUseCaseTests.swift; sourceTree = "<group>"; };
+		AB80243C28809AC600814602 /* ItemRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepositoryMock.swift; sourceTree = "<group>"; };
+		AB80243F2880B2CA00814602 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		AB8024412880B78D00814602 /* APIEndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPoints.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +130,7 @@
 		AB8023E5287EC31F00814602 /* TestLeBoncoinTests */ = {
 			isa = PBXGroup;
 			children = (
+				AB802437288093F900814602 /* UseCase */,
 				AB80242428805E7700814602 /* Presenters */,
 			);
 			path = TestLeBoncoinTests;
@@ -135,7 +148,8 @@
 		AB802400287EC5C400814602 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				AB802403287EC66900814602 /* Network */,
+				AB80243E2880B2B900814602 /* Network */,
+				AB80243428808D2100814602 /* Repositories */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -143,6 +157,7 @@
 		AB802401287EC61600814602 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				AB80243328808D0B00814602 /* Interfaces */,
 				AB80242D2880798C00814602 /* Common */,
 				AB80241D28802FBB00814602 /* UseCases */,
 				AB802402287EC63900814602 /* Entities */,
@@ -157,13 +172,6 @@
 				AB802422288046BE00814602 /* Category.swift */,
 			);
 			path = Entities;
-			sourceTree = "<group>";
-		};
-		AB802403287EC66900814602 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		AB802409287EC94500814602 /* View */ = {
@@ -259,6 +267,64 @@
 				AB80242E2880799B00814602 /* DomainError.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		AB80243028808B7200814602 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				AB80243128808B8200814602 /* ItemRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		AB80243328808D0B00814602 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				AB80243028808B7200814602 /* Repositories */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		AB80243428808D2100814602 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				AB80243528808D9900814602 /* ItemRepositoryImpl.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		AB802437288093F900814602 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				AB80243A2880941400814602 /* ItemList */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		AB80243A2880941400814602 /* ItemList */ = {
+			isa = PBXGroup;
+			children = (
+				AB80243B28809AB500814602 /* Mocks */,
+				AB8024382880940F00814602 /* FetchItemListUseCaseTests.swift */,
+			);
+			path = ItemList;
+			sourceTree = "<group>";
+		};
+		AB80243B28809AB500814602 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				AB80243C28809AC600814602 /* ItemRepositoryMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		AB80243E2880B2B900814602 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AB80243F2880B2CA00814602 /* Utilities.swift */,
+				AB8024412880B78D00814602 /* APIEndPoints.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,11 +430,15 @@
 				AB8024162880104400814602 /* Coordinator.swift in Sources */,
 				AB8023D4287EC31E00814602 /* ItemListViewController.swift in Sources */,
 				AB80242F2880799B00814602 /* DomainError.swift in Sources */,
+				AB80243228808B8200814602 /* ItemRepository.swift in Sources */,
 				AB802405287EC84B00814602 /* ItemViewModel.swift in Sources */,
 				AB8023D0287EC31E00814602 /* AppDelegate.swift in Sources */,
+				AB8024402880B2CA00814602 /* Utilities.swift in Sources */,
+				AB8024422880B78D00814602 /* APIEndPoints.swift in Sources */,
 				AB8023D2287EC31E00814602 /* SceneDelegate.swift in Sources */,
 				AB80241C2880164F00814602 /* ItemDetailViewController.swift in Sources */,
 				AB8024212880314900814602 /* Item.swift in Sources */,
+				AB80243628808D9900814602 /* ItemRepositoryImpl.swift in Sources */,
 				AB80240F287ECE3500814602 /* ItemListViewController+UITableViewDataSource.swift in Sources */,
 				AB802411287EE7C900814602 /* ItemListPresenter.swift in Sources */,
 				AB80240D287ECDE600814602 /* ItemListViewController+UITableViewDelegate.swift in Sources */,
@@ -382,6 +452,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB8023E7287EC31F00814602 /* ItemListPresenterTests.swift in Sources */,
+				AB8024392880940F00814602 /* FetchItemListUseCaseTests.swift in Sources */,
+				AB80243D28809AC600814602 /* ItemRepositoryMock.swift in Sources */,
 				AB80242C28806E7500814602 /* FetchItemListUseCaseMock.swift in Sources */,
 				AB80242A288066E900814602 /* Expectation.swift in Sources */,
 				AB80242828805EBF00814602 /* ItemListViewMock.swift in Sources */,
