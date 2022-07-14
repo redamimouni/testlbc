@@ -26,7 +26,8 @@ final class MainCoordinator: Coordinator {
     }
 
     func displayItemListView() {
-        let viewController = ItemListViewController()
+        let presenter = ItemListPresenter(useCase: FetchItemListUseCaseImpl())
+        let viewController = ItemListViewController(presenter: presenter)
         viewController.bindWith(coordinator: self)
         navigationController.pushViewController(viewController, animated: false)
     }

@@ -21,6 +21,9 @@
 		AB802411287EE7C900814602 /* ItemListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB802410287EE7C900814602 /* ItemListPresenter.swift */; };
 		AB8024162880104400814602 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024152880104400814602 /* Coordinator.swift */; };
 		AB80241C2880164F00814602 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80241B2880164F00814602 /* ItemDetailViewController.swift */; };
+		AB80241F28802FE000814602 /* FetchItemListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80241E28802FE000814602 /* FetchItemListUseCase.swift */; };
+		AB8024212880314900814602 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024202880314900814602 /* Item.swift */; };
+		AB802423288046BE00814602 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB802422288046BE00814602 /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		AB802410287EE7C900814602 /* ItemListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListPresenter.swift; sourceTree = "<group>"; };
 		AB8024152880104400814602 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		AB80241B2880164F00814602 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
+		AB80241E28802FE000814602 /* FetchItemListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchItemListUseCase.swift; sourceTree = "<group>"; };
+		AB8024202880314900814602 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		AB802422288046BE00814602 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +165,7 @@
 		AB802401287EC61600814602 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				AB80241D28802FBB00814602 /* UseCases */,
 				AB802402287EC63900814602 /* Entities */,
 			);
 			path = Domain;
@@ -167,6 +174,8 @@
 		AB802402287EC63900814602 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				AB8024202880314900814602 /* Item.swift */,
+				AB802422288046BE00814602 /* Category.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -228,6 +237,14 @@
 				AB80241B2880164F00814602 /* ItemDetailViewController.swift */,
 			);
 			path = ItemDetail;
+			sourceTree = "<group>";
+		};
+		AB80241D28802FBB00814602 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				AB80241E28802FE000814602 /* FetchItemListUseCase.swift */,
+			);
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,9 +383,12 @@
 				AB8023D0287EC31E00814602 /* AppDelegate.swift in Sources */,
 				AB8023D2287EC31E00814602 /* SceneDelegate.swift in Sources */,
 				AB80241C2880164F00814602 /* ItemDetailViewController.swift in Sources */,
+				AB8024212880314900814602 /* Item.swift in Sources */,
 				AB80240F287ECE3500814602 /* ItemListViewController+UITableViewDataSource.swift in Sources */,
 				AB802411287EE7C900814602 /* ItemListPresenter.swift in Sources */,
 				AB80240D287ECDE600814602 /* ItemListViewController+UITableViewDelegate.swift in Sources */,
+				AB80241F28802FE000814602 /* FetchItemListUseCase.swift in Sources */,
+				AB802423288046BE00814602 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,7 +14,7 @@ final class ItemListViewController: UIViewController, ItemListDelegate, Coordina
 
     // MARK: - Dependencies
 
-    private let presenter = ItemListPresenter()
+    private let presenter: ItemListPresenter
     internal weak var coordinator: MainCoordinator?
 
     // MARK: - Subviews
@@ -25,6 +25,15 @@ final class ItemListViewController: UIViewController, ItemListDelegate, Coordina
 
     func bindWith(coordinator: MainCoordinator) {
         self.coordinator = coordinator
+    }
+
+    init(presenter: ItemListPresenter) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - Lifecycle
@@ -41,6 +50,10 @@ final class ItemListViewController: UIViewController, ItemListDelegate, Coordina
     func displayItemList(items: [ItemViewModel]) {
         listItemViewModel = items
         tableView.reloadData()
+    }
+
+    func displayError() {
+        tableView.isHidden = true
     }
 
     // MARK: - Private

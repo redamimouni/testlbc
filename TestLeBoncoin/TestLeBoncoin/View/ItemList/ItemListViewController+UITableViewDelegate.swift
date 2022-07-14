@@ -11,5 +11,6 @@ import UIKit
 extension ItemListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         coordinator?.displayItemDetailView()
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
