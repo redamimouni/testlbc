@@ -7,14 +7,40 @@
 
 import UIKit
 
-final class ItemListViewController: UIViewController {
+final class ItemListViewController: UIViewController, ItemListDelegate, Coordinated {
+    // MARK: - Data
+
+    internal var listItemViewModel: [ItemViewModel] = []
+
+    // MARK: - Dependencies
+
+    private let presenter = ItemListPresenter()
+    internal weak var coordinator: MainCoordinator?
+
+    // MARK: - Subviews
+
     private lazy var tableView: UITableView = createTableView()
+
+    // MARK: - Coordinated
+
+    func bindWith(coordinator: MainCoordinator) {
+        self.coordinator = coordinator
+    }
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupInterface()
+        presenter.delegate = self
+        presenter.fetchItemList()
+    }
+
+    // MARK: - Delegate
+
+    func displayItemList(items: [ItemViewModel]) {
+        listItemViewModel = items
+        tableView.reloadData()
     }
 
     // MARK: - Private

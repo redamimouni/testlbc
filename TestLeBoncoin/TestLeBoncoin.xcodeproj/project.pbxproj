@@ -18,6 +18,9 @@
 		AB802405287EC84B00814602 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB802404287EC84B00814602 /* ItemViewModel.swift */; };
 		AB80240D287ECDE600814602 /* ItemListViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80240C287ECDE600814602 /* ItemListViewController+UITableViewDelegate.swift */; };
 		AB80240F287ECE3500814602 /* ItemListViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80240E287ECE3500814602 /* ItemListViewController+UITableViewDataSource.swift */; };
+		AB802411287EE7C900814602 /* ItemListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB802410287EE7C900814602 /* ItemListPresenter.swift */; };
+		AB8024162880104400814602 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024152880104400814602 /* Coordinator.swift */; };
+		AB80241C2880164F00814602 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80241B2880164F00814602 /* ItemDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		AB802404287EC84B00814602 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 		AB80240C287ECDE600814602 /* ItemListViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemListViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		AB80240E287ECE3500814602 /* ItemListViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemListViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
+		AB802410287EE7C900814602 /* ItemListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListPresenter.swift; sourceTree = "<group>"; };
+		AB8024152880104400814602 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		AB80241B2880164F00814602 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,9 +181,9 @@
 		AB802409287EC94500814602 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AB8023D3287EC31E00814602 /* ItemListViewController.swift */,
-				AB80240C287ECDE600814602 /* ItemListViewController+UITableViewDelegate.swift */,
-				AB80240E287ECE3500814602 /* ItemListViewController+UITableViewDataSource.swift */,
+				AB8024142880103500814602 /* Navigation */,
+				AB802419288015F500814602 /* ItemList */,
+				AB80241A2880160100814602 /* ItemDetail */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -193,8 +199,35 @@
 		AB80240B287EC9A400814602 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				AB802410287EE7C900814602 /* ItemListPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		AB8024142880103500814602 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				AB8024152880104400814602 /* Coordinator.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		AB802419288015F500814602 /* ItemList */ = {
+			isa = PBXGroup;
+			children = (
+				AB8023D3287EC31E00814602 /* ItemListViewController.swift */,
+				AB80240C287ECDE600814602 /* ItemListViewController+UITableViewDelegate.swift */,
+				AB80240E287ECE3500814602 /* ItemListViewController+UITableViewDataSource.swift */,
+			);
+			path = ItemList;
+			sourceTree = "<group>";
+		};
+		AB80241A2880160100814602 /* ItemDetail */ = {
+			isa = PBXGroup;
+			children = (
+				AB80241B2880164F00814602 /* ItemDetailViewController.swift */,
+			);
+			path = ItemDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,11 +360,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB8024162880104400814602 /* Coordinator.swift in Sources */,
 				AB8023D4287EC31E00814602 /* ItemListViewController.swift in Sources */,
 				AB802405287EC84B00814602 /* ItemViewModel.swift in Sources */,
 				AB8023D0287EC31E00814602 /* AppDelegate.swift in Sources */,
 				AB8023D2287EC31E00814602 /* SceneDelegate.swift in Sources */,
+				AB80241C2880164F00814602 /* ItemDetailViewController.swift in Sources */,
 				AB80240F287ECE3500814602 /* ItemListViewController+UITableViewDataSource.swift in Sources */,
+				AB802411287EE7C900814602 /* ItemListPresenter.swift in Sources */,
 				AB80240D287ECDE600814602 /* ItemListViewController+UITableViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

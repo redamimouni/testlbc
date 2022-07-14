@@ -10,14 +10,13 @@ import UIKit
 
 extension ItemListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return listItemViewModel.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let viewModel = listItemViewModel[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for: indexPath)
-        cell.textLabel?.text = "test"
+        cell.textLabel?.text = viewModel.title
         return cell
     }
-
-    
 }

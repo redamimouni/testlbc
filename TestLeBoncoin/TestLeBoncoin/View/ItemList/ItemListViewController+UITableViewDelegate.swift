@@ -9,5 +9,7 @@ import Foundation
 import UIKit
 
 extension ItemListViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        coordinator?.displayItemDetailView()
+    }
 }
