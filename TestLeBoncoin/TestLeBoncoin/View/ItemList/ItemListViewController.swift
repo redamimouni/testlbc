@@ -52,7 +52,7 @@ final class ItemListViewController: UIViewController, ItemListDelegate, Coordina
         tableView.reloadData()
     }
 
-    func displayError() {
+    func displayError(message: String) {
         tableView.isHidden = true
     }
 

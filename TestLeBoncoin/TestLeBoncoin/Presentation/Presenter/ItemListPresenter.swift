@@ -9,10 +9,10 @@ import Foundation
 
 protocol ItemListDelegate: NSObjectProtocol {
     func displayItemList(items: [ItemViewModel])
-    func displayError()
+    func displayError(message: String)
 }
 
-class ItemListPresenter {
+final class ItemListPresenter {
     private let useCase: FetchItemListUseCase
 
     weak var delegate: ItemListDelegate?
@@ -28,8 +28,8 @@ class ItemListPresenter {
                 self?.delegate?.displayItemList(items: itemList.map({
                     $0.toViewModel()
                 }))
-            case .failure(_):
-                self?.delegate?.displayError()
+            case .failure(let error):
+                self?.delegate?.displayError(message: error.rawValue)
             }
         }
     }
