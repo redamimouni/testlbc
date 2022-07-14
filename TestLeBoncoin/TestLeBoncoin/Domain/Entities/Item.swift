@@ -15,6 +15,6 @@ struct Item: Equatable {
     let isUrgent: Bool
     let category: Category
     let image: Data
-    let creationDate: Date
-    let siret: String? = "Siret unavailable"
+    let creationDate: String
+    let siret: String?
 }

@@ -25,7 +25,8 @@ extension Item {
         isUrgent: true,
         category: Category(id: 1, name: "category"),
         image: Data(),
-        creationDate: Date()
+        creationDate: "18/01/2012",
+        siret: "siret"
     )
 
     static let mock2 = Item(
@@ -36,7 +37,8 @@ extension Item {
         isUrgent: false,
         category: Category(id: 2, name: "second category"),
         image: Data(),
-        creationDate: Date()
+        creationDate: "18/01/2019",
+        siret: "siret"
     )
 
     static let mocks = [mock, mock2]

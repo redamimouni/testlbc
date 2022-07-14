@@ -32,6 +32,7 @@
 		AB80243D28809AC600814602 /* ItemRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80243C28809AC600814602 /* ItemRepositoryMock.swift */; };
 		AB8024402880B2CA00814602 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80243F2880B2CA00814602 /* Utilities.swift */; };
 		AB8024422880B78D00814602 /* APIEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024412880B78D00814602 /* APIEndPoints.swift */; };
+		AB8024452880CD8000814602 /* ItemListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024442880CD8000814602 /* ItemListDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		AB80243C28809AC600814602 /* ItemRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepositoryMock.swift; sourceTree = "<group>"; };
 		AB80243F2880B2CA00814602 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		AB8024412880B78D00814602 /* APIEndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPoints.swift; sourceTree = "<group>"; };
+		AB8024442880CD8000814602 /* ItemListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			children = (
 				AB80243E2880B2B900814602 /* Network */,
 				AB80243428808D2100814602 /* Repositories */,
+				AB8024432880CD6400814602 /* DataMapping */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -327,6 +330,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		AB8024432880CD6400814602 /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				AB8024442880CD8000814602 /* ItemListDTO.swift */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -435,6 +446,7 @@
 				AB8023D0287EC31E00814602 /* AppDelegate.swift in Sources */,
 				AB8024402880B2CA00814602 /* Utilities.swift in Sources */,
 				AB8024422880B78D00814602 /* APIEndPoints.swift in Sources */,
+				AB8024452880CD8000814602 /* ItemListDTO.swift in Sources */,
 				AB8023D2287EC31E00814602 /* SceneDelegate.swift in Sources */,
 				AB80241C2880164F00814602 /* ItemDetailViewController.swift in Sources */,
 				AB8024212880314900814602 /* Item.swift in Sources */,

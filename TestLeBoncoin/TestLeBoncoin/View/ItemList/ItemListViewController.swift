@@ -49,7 +49,9 @@ final class ItemListViewController: UIViewController, ItemListDelegate, Coordina
 
     func displayItemList(items: [ItemViewModel]) {
         listItemViewModel = items
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 
     func displayError(message: String) {
