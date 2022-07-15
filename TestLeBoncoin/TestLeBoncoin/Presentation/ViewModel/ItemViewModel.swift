@@ -3,11 +3,12 @@ import UIKit
 
 struct ItemViewModel: Equatable {
     static func == (lhs: ItemViewModel, rhs: ItemViewModel) -> Bool {
-        return lhs.title == rhs.title && lhs.price == rhs.price
+        return lhs.title == rhs.title && lhs.price == rhs.price && lhs.isUrgent == rhs.isUrgent
     }
 
     let title: String
     let price: String
+    let isUrgent: Bool
     let image: UIImage
 }
 
@@ -16,6 +17,7 @@ extension Item {
         return ItemViewModel(
             title: title,
             price: String(format: "%g €", price),
+            isUrgent: isUrgent,
             image: UIImage(data: image) ?? UIImage(named: "imageNotFound")!
         )
     }

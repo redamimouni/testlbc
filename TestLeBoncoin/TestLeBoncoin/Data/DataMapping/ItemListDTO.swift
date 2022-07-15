@@ -8,9 +8,10 @@
 import Foundation
 
 // MARK: - ItemDTO
+
 struct ItemDTO: Codable {
     let id, categoryID: Int
-    let title, welcomeDescription: String
+    let title, iDescription: String
     let price: Double
     let imagesURL: ImagesURL
     let creationDate: String
@@ -21,7 +22,7 @@ struct ItemDTO: Codable {
         case id
         case categoryID = "category_id"
         case title
-        case welcomeDescription = "description"
+        case iDescription = "description"
         case price
         case imagesURL = "images_url"
         case creationDate = "creation_date"
@@ -31,26 +32,11 @@ struct ItemDTO: Codable {
 }
 
 // MARK: - ImagesURL
+
 struct ImagesURL: Codable {
     let small, thumb: String?
 }
 
-typealias ItemListDTO = [ItemDTO]
+// MARK: - ItemListDTO
 
-extension ItemListDTO {
-    func toDomain() -> [Item] {
-        return map {
-            Item(
-                id: $0.id,
-                title: $0.title,
-                description: $0.welcomeDescription,
-                price: $0.price,
-                isUrgent: $0.isUrgent,
-                category: Category(id: $0.categoryID, name: ""),
-                image: Data(),
-                creationDate: $0.creationDate,
-                siret: $0.siret
-            )
-        }
-    }
-}
+typealias ItemListDTO = [ItemDTO]

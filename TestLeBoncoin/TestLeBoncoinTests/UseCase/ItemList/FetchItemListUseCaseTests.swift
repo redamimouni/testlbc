@@ -11,14 +11,20 @@ import XCTest
 final class FetchItemListUseCaseTests: XCTestCase {
 
     private lazy var useCase: FetchItemListUseCase = {
-        return FetchItemListUseCaseImpl(repository: repository)
+        return FetchItemListUseCaseImpl(
+            itemRepository: repository,
+            imageRepository: imageRepository,
+            categoryRepository: categoryRepository
+        )
     }()
 
     var repository = ItemRepositoryMock()
+    var imageRepository = ImageRepositoryImpl()
+    var categoryRepository = CategoryRepositoryImpl()
 
     func test_execute_shouldReturnSuccess() {
         // Given
-        repository.mockedResult = .success(Item.mocks)
+        repository.mockedResult = .success(ItemDTO.mocks)
 
         // When
         useCase.execute { result in
@@ -34,7 +40,7 @@ final class FetchItemListUseCaseTests: XCTestCase {
 
     func test_execute_shouldReturnFailure() {
         // Given
-        repository.mockedResult = .failure(.unfoundCategory)
+        repository.mockedResult = .failure(.parsingError)
 
         // When
         useCase.execute { result in
@@ -43,7 +49,7 @@ final class FetchItemListUseCaseTests: XCTestCase {
             case .success(_):
                 XCTFail()
             case .failure(let error):
-                XCTAssertEqual(error, .unfoundCategory)
+                XCTAssertEqual(error, .networkError)
             }
         }
     }

@@ -15,8 +15,15 @@ extension ItemListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let viewModel = listItemViewModel[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for: indexPath)
-        cell.textLabel?.text = viewModel.title
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for: indexPath) as! ItemViewCell
+        cell.titleLabel.text = viewModel.title
+        cell.priceLabel.text = viewModel.price
+        cell.leftImageView.image = viewModel.image
+        cell.isUrgentLabel.isHidden = !viewModel.isUrgent
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
 }

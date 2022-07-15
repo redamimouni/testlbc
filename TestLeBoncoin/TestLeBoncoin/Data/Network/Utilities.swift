@@ -9,10 +9,10 @@ import Foundation
 
 extension URLSession {
     func dataTask(with url: URLRequest,
-                  cachedResponseOnError: Bool,
+                  cachedResponse: Bool,
                   completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         return dataTask(with: url) { (data, response, error) in
-            if cachedResponseOnError,
+            if cachedResponse,
                 let error = error,
                 let cachedResponse = self.configuration.urlCache?.cachedResponse(for: url) {
 

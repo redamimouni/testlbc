@@ -1,15 +1,15 @@
 //
-//  ItemRepository.swift
+//  CategoryRepositoryImpl.swift
 //  TestLeBoncoin
 //
-//  Created by Reda Mimouni on 14/07/2022.
+//  Created by Reda Mimouni on 15/07/2022.
 //
 
 import Foundation
 
-class ItemRepositoryImpl: ItemRepository {
-    func fetchItemList(completion: @escaping (Result<[ItemDTO], NetworkError>) -> Void) {
-        let request = URLRequest.urlRequestFrom(urlString: APIEndpoints.listing.rawValue)
+class CategoryRepositoryImpl: CategoryRepository {
+    func fetchCategoryList(completion: @escaping (Result<[CategoryDTO], NetworkError>) -> Void) {
+        let request = URLRequest.urlRequestFrom(urlString: APIEndpoints.categories.rawValue)
         let task = URLSession.shared.dataTask(with: request, cachedResponse: true) { [weak self] data, response, error in
             if let _ = error {
                 completion(.failure(.httpRequestError))
@@ -24,9 +24,9 @@ class ItemRepositoryImpl: ItemRepository {
         task.resume()
     }
 
-    private func decodeEntityFromData(data: Data, completion: @escaping (Result<[ItemDTO], NetworkError>) -> Void) {
+    private func decodeEntityFromData(data: Data, completion: @escaping (Result<[CategoryDTO], NetworkError>) -> Void) {
         do {
-            let jsonFromData = try JSONDecoder().decode(ItemListDTO.self, from: data)
+            let jsonFromData = try JSONDecoder().decode(CategoryListDTO.self, from: data)
             completion(.success(jsonFromData))
         } catch {
             print("Error took place\(error)")

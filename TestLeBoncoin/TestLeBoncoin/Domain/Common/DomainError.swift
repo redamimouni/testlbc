@@ -12,4 +12,5 @@ enum DomainError: String, Error {
     case unfoundCategory = "Domain rule: some category is missing"
     case unfoundImage = "Domain rule: some image is missing"
     case unfoundPrice = "Domain rule: some price is missing"
+    case networkError
 }

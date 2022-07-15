@@ -75,12 +75,11 @@ final class ItemListViewController: UIViewController, ItemListDelegate, Coordina
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorInset = .zero
-        tableView.separatorStyle = .none
+        tableView.separatorStyle = .singleLine
         tableView.showsVerticalScrollIndicator = false
-        tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableView.automaticDimension
         tableView.sectionFooterHeight = 0
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellIdentifier")
+        tableView.register(ItemViewCell.self, forCellReuseIdentifier: "cellIdentifier")
         tableView.delegate = self
         tableView.dataSource = self
         return tableView

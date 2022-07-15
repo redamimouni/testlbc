@@ -33,6 +33,14 @@
 		AB8024402880B2CA00814602 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80243F2880B2CA00814602 /* Utilities.swift */; };
 		AB8024422880B78D00814602 /* APIEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024412880B78D00814602 /* APIEndPoints.swift */; };
 		AB8024452880CD8000814602 /* ItemListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024442880CD8000814602 /* ItemListDTO.swift */; };
+		AB8024482880D4C100814602 /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024472880D4C100814602 /* ImageRepository.swift */; };
+		AB80244A2880D50400814602 /* CategoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024492880D50400814602 /* CategoryRepository.swift */; };
+		AB80244C2880D60800814602 /* ImageRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80244B2880D60800814602 /* ImageRepositoryImpl.swift */; };
+		AB80244E2880D62300814602 /* CategoryRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80244D2880D62300814602 /* CategoryRepositoryImpl.swift */; };
+		AB8024502880D66C00814602 /* CategoryListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80244F2880D66C00814602 /* CategoryListDTO.swift */; };
+		AB8024532881D97600814602 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024522881D97600814602 /* NetworkError.swift */; };
+		AB8024552881DDBB00814602 /* ItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024542881DDBB00814602 /* ItemViewCell.swift */; };
+		AB8024582881E04200814602 /* CGFloat+Paddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024572881E04200814602 /* CGFloat+Paddings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +83,14 @@
 		AB80243F2880B2CA00814602 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		AB8024412880B78D00814602 /* APIEndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPoints.swift; sourceTree = "<group>"; };
 		AB8024442880CD8000814602 /* ItemListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListDTO.swift; sourceTree = "<group>"; };
+		AB8024472880D4C100814602 /* ImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepository.swift; sourceTree = "<group>"; };
+		AB8024492880D50400814602 /* CategoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRepository.swift; sourceTree = "<group>"; };
+		AB80244B2880D60800814602 /* ImageRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepositoryImpl.swift; sourceTree = "<group>"; };
+		AB80244D2880D62300814602 /* CategoryRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRepositoryImpl.swift; sourceTree = "<group>"; };
+		AB80244F2880D66C00814602 /* CategoryListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListDTO.swift; sourceTree = "<group>"; };
+		AB8024522881D97600814602 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		AB8024542881DDBB00814602 /* ItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewCell.swift; sourceTree = "<group>"; };
+		AB8024572881E04200814602 /* CGFloat+Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Paddings.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +166,7 @@
 		AB802400287EC5C400814602 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				AB8024512881D96B00814602 /* Common */,
 				AB80243E2880B2B900814602 /* Network */,
 				AB80243428808D2100814602 /* Repositories */,
 				AB8024432880CD6400814602 /* DataMapping */,
@@ -180,6 +197,7 @@
 		AB802409287EC94500814602 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AB8024562881E02300814602 /* Utilities */,
 				AB8024142880103500814602 /* Navigation */,
 				AB802419288015F500814602 /* ItemList */,
 				AB80241A2880160100814602 /* ItemDetail */,
@@ -217,6 +235,7 @@
 				AB8023D3287EC31E00814602 /* ItemListViewController.swift */,
 				AB80240C287ECDE600814602 /* ItemListViewController+UITableViewDelegate.swift */,
 				AB80240E287ECE3500814602 /* ItemListViewController+UITableViewDataSource.swift */,
+				AB8024542881DDBB00814602 /* ItemViewCell.swift */,
 			);
 			path = ItemList;
 			sourceTree = "<group>";
@@ -276,6 +295,8 @@
 			isa = PBXGroup;
 			children = (
 				AB80243128808B8200814602 /* ItemRepository.swift */,
+				AB8024472880D4C100814602 /* ImageRepository.swift */,
+				AB8024492880D50400814602 /* CategoryRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -292,6 +313,8 @@
 			isa = PBXGroup;
 			children = (
 				AB80243528808D9900814602 /* ItemRepositoryImpl.swift */,
+				AB80244B2880D60800814602 /* ImageRepositoryImpl.swift */,
+				AB80244D2880D62300814602 /* CategoryRepositoryImpl.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -334,8 +357,25 @@
 			isa = PBXGroup;
 			children = (
 				AB8024442880CD8000814602 /* ItemListDTO.swift */,
+				AB80244F2880D66C00814602 /* CategoryListDTO.swift */,
 			);
 			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		AB8024512881D96B00814602 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				AB8024522881D97600814602 /* NetworkError.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		AB8024562881E02300814602 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AB8024572881E04200814602 /* CGFloat+Paddings.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,18 +483,26 @@
 				AB80242F2880799B00814602 /* DomainError.swift in Sources */,
 				AB80243228808B8200814602 /* ItemRepository.swift in Sources */,
 				AB802405287EC84B00814602 /* ItemViewModel.swift in Sources */,
+				AB80244E2880D62300814602 /* CategoryRepositoryImpl.swift in Sources */,
 				AB8023D0287EC31E00814602 /* AppDelegate.swift in Sources */,
 				AB8024402880B2CA00814602 /* Utilities.swift in Sources */,
 				AB8024422880B78D00814602 /* APIEndPoints.swift in Sources */,
+				AB8024532881D97600814602 /* NetworkError.swift in Sources */,
 				AB8024452880CD8000814602 /* ItemListDTO.swift in Sources */,
 				AB8023D2287EC31E00814602 /* SceneDelegate.swift in Sources */,
 				AB80241C2880164F00814602 /* ItemDetailViewController.swift in Sources */,
 				AB8024212880314900814602 /* Item.swift in Sources */,
+				AB8024582881E04200814602 /* CGFloat+Paddings.swift in Sources */,
+				AB80244C2880D60800814602 /* ImageRepositoryImpl.swift in Sources */,
 				AB80243628808D9900814602 /* ItemRepositoryImpl.swift in Sources */,
+				AB8024552881DDBB00814602 /* ItemViewCell.swift in Sources */,
+				AB80244A2880D50400814602 /* CategoryRepository.swift in Sources */,
 				AB80240F287ECE3500814602 /* ItemListViewController+UITableViewDataSource.swift in Sources */,
 				AB802411287EE7C900814602 /* ItemListPresenter.swift in Sources */,
 				AB80240D287ECDE600814602 /* ItemListViewController+UITableViewDelegate.swift in Sources */,
+				AB8024502880D66C00814602 /* CategoryListDTO.swift in Sources */,
 				AB80241F28802FE000814602 /* FetchItemListUseCase.swift in Sources */,
+				AB8024482880D4C100814602 /* ImageRepository.swift in Sources */,
 				AB802423288046BE00814602 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

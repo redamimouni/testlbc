@@ -26,8 +26,14 @@ final class MainCoordinator: Coordinator {
     }
 
     func displayItemListView() {
-        let repository = ItemRepositoryImpl()
-        let presenter = ItemListPresenter(useCase: FetchItemListUseCaseImpl(repository: repository))
+        let itemRepository = ItemRepositoryImpl()
+        let imageRepository = ImageRepositoryImpl()
+        let categoryRepository = CategoryRepositoryImpl()
+        let presenter = ItemListPresenter(useCase: FetchItemListUseCaseImpl(
+            itemRepository: itemRepository,
+            imageRepository: imageRepository,
+            categoryRepository: categoryRepository
+        ))
         let viewController = ItemListViewController(presenter: presenter)
         viewController.bindWith(coordinator: self)
         navigationController.pushViewController(viewController, animated: false)

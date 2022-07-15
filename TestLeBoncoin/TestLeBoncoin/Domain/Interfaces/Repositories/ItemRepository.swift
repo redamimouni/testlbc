@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ItemRepository {
-    func fetchItemList(completion: @escaping(Result<[Item], DomainError>) -> Void)
+    func fetchItemList(completion: @escaping(Result<[ItemDTO], NetworkError>) -> Void)
 }

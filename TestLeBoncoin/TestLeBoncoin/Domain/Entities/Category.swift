@@ -10,4 +10,8 @@ import Foundation
 struct Category: Equatable {
     let id: Int
     let name: String
+
+    static var unknown: Category {
+        return Category(id: 9999, name: "Unknown")
+    }
 }
