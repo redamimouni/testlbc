@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ItemListDelegate: NSObjectProtocol {
-    func displayItemList(items: [ItemViewModel])
+    func displayItemList(items: [ItemViewModel], categories: [String])
     func displayError(message: String)
 }
 
@@ -25,9 +25,14 @@ final class ItemListPresenter {
         useCase.execute { [weak self] result in
             switch result {
             case .success(let itemList):
-                self?.delegate?.displayItemList(items: itemList.map({
-                    $0.toViewModel()
-                }))
+                let itemList = itemList.map({ $0.toViewModel()})
+                self?.delegate?.displayItemList(
+                    items: itemList,
+                    categories: Array(
+                        Set(itemList.compactMap({
+                            $0.categoryName
+                        }))
+                    ))
             case .failure(let error):
                 self?.delegate?.displayError(message: error.rawValue)
             }

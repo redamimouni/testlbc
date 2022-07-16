@@ -17,6 +17,8 @@ final class FetchItemListUseCaseImpl: FetchItemListUseCase {
     private let imageRepository: ImageRepository
     private let categoryRepository: CategoryRepository
 
+    private var categoryList: CategoryListDTO?
+
     init(
         itemRepository: ItemRepository,
         imageRepository: ImageRepository,
@@ -28,14 +30,13 @@ final class FetchItemListUseCaseImpl: FetchItemListUseCase {
     }
 
     func execute(completion: @escaping (Result<[Item], DomainError>) -> Void) {
-        itemRepository.fetchItemList { result in
+        loadCategories { [weak self] result in
             switch result {
-            case .success(let items):
-                completion(.success(items.map { [weak self] item in
-                    (self?.convertItemToDomain(item: item))!
-                }))
-            case .failure(_):
-                completion(.failure(.networkError))
+            case .success(let categories):
+                self?.categoryList = categories
+                self?.loadItems(completion: completion)
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }
@@ -52,27 +53,39 @@ final class FetchItemListUseCaseImpl: FetchItemListUseCase {
     }
 
     private func convertItemToDomain(item: ItemDTO) -> Item {
-        let category = Category.unknown
         return Item(
             id: item.id,
             title: item.title,
             description: item.iDescription,
             price: item.price,
             isUrgent: item.isUrgent,
-            category: category,
+            category: categoryList?.first(where: { $0.id == item.categoryID })?.toDomain() ?? Category.unknown,
             imageUrl: item.imagesURL.small ?? "",
             creationDate: item.creationDate,
             siret: item.siret
         )
     }
 
-    private func loadCategory(with iD: Int, completion: @escaping (Category) -> Void) {
+    private func loadItems(completion: @escaping (Result<[Item], DomainError>) -> Void) {
+        itemRepository.fetchItemList { result in
+            switch result {
+            case .success(let items):
+                completion(.success(items.map { [weak self] item in
+                    (self?.convertItemToDomain(item: item))!
+                }))
+            case .failure(_):
+                completion(.failure(.networkError))
+            }
+        }
+    }
+
+    private func loadCategories(completion: @escaping (Result<CategoryListDTO, DomainError>) -> Void) {
         categoryRepository.fetchCategoryList { result in
             switch result {
             case .success(let categoryList):
-                completion(categoryList.first(where: { $0.id == iD })?.toDomain() ?? Category.unknown)
-            default:
-                completion(Category.unknown)
+                completion(.success(categoryList))
+            case .failure(_):
+                completion(.failure(.networkError))
             }
         }
     }

@@ -11,7 +11,7 @@ final class ItemListViewController: UIViewController, ItemListDelegate, Coordina
     // MARK: - Data
 
     internal var listItemViewModel: [ItemViewModel] = []
-    internal var categoryItemViewModel: [CategoryViewModel] = []
+    internal var categoryList: [String] = []
 
     // MARK: - Dependencies
 
@@ -48,8 +48,9 @@ final class ItemListViewController: UIViewController, ItemListDelegate, Coordina
 
     // MARK: - Delegate
 
-    func displayItemList(items: [ItemViewModel]) {
+    func displayItemList(items: [ItemViewModel], categories: [String]) {
         listItemViewModel = items
+        categoryList = categories
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }

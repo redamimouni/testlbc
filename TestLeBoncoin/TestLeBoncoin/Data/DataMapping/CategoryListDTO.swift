@@ -17,6 +17,9 @@ typealias CategoryListDTO = [CategoryDTO]
 
 extension CategoryDTO {
     func toDomain() -> Category {
-        return Category(id: 999, name: "Unknwon category")
+        guard let categoryId = id, let categoryName = name else {
+            return Category.unknown
+        }
+        return Category(id: categoryId, name: categoryName)
     }
 }

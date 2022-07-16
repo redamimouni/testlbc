@@ -9,6 +9,7 @@ struct ItemViewModel: Equatable {
     let title: String
     let price: String
     let isUrgent: Bool
+    let categoryName: String
     let imageUrl: String
 }
 
@@ -18,6 +19,7 @@ extension Item {
             title: title,
             price: String(format: "%g €", price),
             isUrgent: isUrgent,
+            categoryName: category.name,
             imageUrl: imageUrl
         )
     }
