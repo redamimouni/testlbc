@@ -9,6 +9,10 @@ import Foundation
 import UIKit
 
 final class ItemViewCell: UITableViewCell {
+    // MARK: - Default
+
+    private let defaultImage = UIImage(named: "imageNotFound")
+
     // MARK: - Subviews
 
     lazy var titleLabel: UILabel = {
@@ -59,12 +63,30 @@ final class ItemViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Private
+
+    func fill(with viewModel: ItemViewModel, presenter: ItemListPresenter) {
+        titleLabel.text = viewModel.title
+        priceLabel.text = viewModel.price
+        isUrgentLabel.isHidden = !viewModel.isUrgent
+        presenter.loadImage(with: viewModel.imageUrl) { imageData in
+            DispatchQueue.main.async {
+                guard let data = imageData else {
+                    self.leftImageView.image = self.defaultImage
+                    return
+                }
+                let image = UIImage(data: data)
+                self.leftImageView.image = image
+            }
+        }
+    }
+
     // MARK: - Constraints
 
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            leftImageView.widthAnchor.constraint(equalToConstant: 30),
-            leftImageView.heightAnchor.constraint(equalToConstant: 30),
+            leftImageView.widthAnchor.constraint(equalToConstant: 60),
+            leftImageView.heightAnchor.constraint(equalToConstant: 60),
             leftImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             leftImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .padding),
 

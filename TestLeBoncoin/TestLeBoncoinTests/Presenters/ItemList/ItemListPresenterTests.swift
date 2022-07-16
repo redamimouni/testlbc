@@ -36,8 +36,8 @@ class ItemListPresenterTests: XCTestCase {
 
         // Then
         XCTAssertEqual(result, [
-            ItemViewModel(title: "title", price: "1.2 €", isUrgent: true, image: UIImage()),
-            ItemViewModel(title: "second title", price: "14 €", isUrgent: false, image: UIImage())
+            ItemViewModel(title: "title", price: "1.2 €", isUrgent: true, imageUrl: "url"),
+            ItemViewModel(title: "second title", price: "14 €", isUrgent: false, imageUrl: "url")
         ])
     }
 

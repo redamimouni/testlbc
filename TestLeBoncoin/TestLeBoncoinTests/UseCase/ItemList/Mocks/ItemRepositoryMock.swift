@@ -52,7 +52,7 @@ extension Item {
         price: 1.2,
         isUrgent: true,
         category: Category.unknown,
-        image: Data(),
+        imageUrl: "smallUrl",
         creationDate: "10/10/2019",
         siret: "siret"
     )
@@ -64,7 +64,7 @@ extension Item {
         price: 14,
         isUrgent: false,
         category: Category.unknown,
-        image: Data(),
+        imageUrl: "smallUrl",
         creationDate: "19/10/2021",
         siret: "siret"
     )

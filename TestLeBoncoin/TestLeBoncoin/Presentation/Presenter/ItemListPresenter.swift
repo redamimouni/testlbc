@@ -33,4 +33,8 @@ final class ItemListPresenter {
             }
         }
     }
+
+    func loadImage(with url: String, completion: @escaping(Data?) -> Void) {
+        useCase.loadImage(with: url, completion: completion)
+    }
 }

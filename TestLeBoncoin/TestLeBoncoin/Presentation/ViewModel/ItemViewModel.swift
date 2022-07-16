@@ -9,7 +9,7 @@ struct ItemViewModel: Equatable {
     let title: String
     let price: String
     let isUrgent: Bool
-    let image: UIImage
+    let imageUrl: String
 }
 
 extension Item {
@@ -18,7 +18,7 @@ extension Item {
             title: title,
             price: String(format: "%g €", price),
             isUrgent: isUrgent,
-            image: UIImage(data: image) ?? UIImage(named: "imageNotFound")!
+            imageUrl: imageUrl
         )
     }
 }

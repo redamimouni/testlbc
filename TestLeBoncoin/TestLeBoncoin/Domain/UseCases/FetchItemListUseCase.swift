@@ -9,6 +9,7 @@ import Foundation
 
 protocol FetchItemListUseCase {
     func execute(completion: @escaping (Result<[Item], DomainError>) -> Void)
+    func loadImage(with urlPath: String, completion: @escaping (Data?) -> Void)
 }
 
 final class FetchItemListUseCaseImpl: FetchItemListUseCase {
@@ -39,23 +40,7 @@ final class FetchItemListUseCaseImpl: FetchItemListUseCase {
         }
     }
 
-    private func convertItemToDomain(item: ItemDTO) -> Item {
-        let imageData = Data()
-        let category = Category.unknown
-        return Item(
-            id: item.id,
-            title: item.title,
-            description: item.iDescription,
-            price: item.price,
-            isUrgent: item.isUrgent,
-            category: category,
-            image: imageData,
-            creationDate: item.creationDate,
-            siret: item.siret
-        )
-    }
-
-    private func loadImage(with urlPath: String, completion: @escaping (Data?) -> Void) {
+    func loadImage(with urlPath: String, completion: @escaping (Data?) -> Void) {
         imageRepository.fetchImage(with: urlPath) { result in
             switch result {
             case .success(let data):
@@ -64,6 +49,21 @@ final class FetchItemListUseCaseImpl: FetchItemListUseCase {
                 completion(nil)
             }
         }
+    }
+
+    private func convertItemToDomain(item: ItemDTO) -> Item {
+        let category = Category.unknown
+        return Item(
+            id: item.id,
+            title: item.title,
+            description: item.iDescription,
+            price: item.price,
+            isUrgent: item.isUrgent,
+            category: category,
+            imageUrl: item.imagesURL.small ?? "",
+            creationDate: item.creationDate,
+            siret: item.siret
+        )
     }
 
     private func loadCategory(with iD: Int, completion: @escaping (Category) -> Void) {

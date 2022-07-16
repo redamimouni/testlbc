@@ -16,10 +16,7 @@ extension ItemListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let viewModel = listItemViewModel[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for: indexPath) as! ItemViewCell
-        cell.titleLabel.text = viewModel.title
-        cell.priceLabel.text = viewModel.price
-        cell.leftImageView.image = viewModel.image
-        cell.isUrgentLabel.isHidden = !viewModel.isUrgent
+        cell.fill(with: viewModel, presenter: presenter)
         return cell
     }
 

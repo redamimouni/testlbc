@@ -14,4 +14,8 @@ final class FetchItemListUseCaseMock: FetchItemListUseCase {
     func execute(completion: @escaping (Result<[Item], DomainError>) -> Void) {
         completion(mockedResult)
     }
+
+    func loadImage(with urlPath: String, completion: @escaping (Data?) -> Void) {
+
+    }
 }

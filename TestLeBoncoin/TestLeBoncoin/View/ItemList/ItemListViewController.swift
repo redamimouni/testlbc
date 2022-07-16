@@ -14,7 +14,7 @@ final class ItemListViewController: UIViewController, ItemListDelegate, Coordina
 
     // MARK: - Dependencies
 
-    private let presenter: ItemListPresenter
+    internal let presenter: ItemListPresenter
     internal weak var coordinator: MainCoordinator?
 
     // MARK: - Subviews
