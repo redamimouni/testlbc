@@ -11,6 +11,7 @@ final class ItemListViewController: UIViewController, ItemListDelegate, Coordina
     // MARK: - Data
 
     internal var listItemViewModel: [ItemViewModel] = []
+    internal var categoryItemViewModel: [CategoryViewModel] = []
 
     // MARK: - Dependencies
 

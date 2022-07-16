@@ -41,6 +41,7 @@
 		AB8024532881D97600814602 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024522881D97600814602 /* NetworkError.swift */; };
 		AB8024552881DDBB00814602 /* ItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024542881DDBB00814602 /* ItemViewCell.swift */; };
 		AB8024582881E04200814602 /* CGFloat+Paddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024572881E04200814602 /* CGFloat+Paddings.swift */; };
+		AB80245A28829E3900814602 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80245928829E3900814602 /* CategoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		AB8024522881D97600814602 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		AB8024542881DDBB00814602 /* ItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewCell.swift; sourceTree = "<group>"; };
 		AB8024572881E04200814602 /* CGFloat+Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Paddings.swift"; sourceTree = "<group>"; };
+		AB80245928829E3900814602 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				AB802404287EC84B00814602 /* ItemViewModel.swift */,
+				AB80245928829E3900814602 /* CategoryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				AB8024502880D66C00814602 /* CategoryListDTO.swift in Sources */,
 				AB80241F28802FE000814602 /* FetchItemListUseCase.swift in Sources */,
 				AB8024482880D4C100814602 /* ImageRepository.swift in Sources */,
+				AB80245A28829E3900814602 /* CategoryViewModel.swift in Sources */,
 				AB802423288046BE00814602 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
