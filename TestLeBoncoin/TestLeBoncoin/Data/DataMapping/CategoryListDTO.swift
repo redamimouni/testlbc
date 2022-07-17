@@ -16,10 +16,10 @@ struct CategoryDTO: Codable {
 typealias CategoryListDTO = [CategoryDTO]
 
 extension CategoryDTO {
-    func toDomain() -> Category {
+    func toDomain() -> ItemCategory {
         guard let categoryId = id, let categoryName = name else {
-            return Category.unknown
+            return ItemCategory.unknown
         }
-        return Category(id: categoryId, name: categoryName)
+        return ItemCategory(id: categoryId, name: categoryName)
     }
 }

@@ -13,7 +13,7 @@ struct Item: Equatable {
     let description: String
     let price: Double
     let isUrgent: Bool
-    let category: Category
+    let category: ItemCategory
     let imageUrl: String
     let creationDate: String
     let siret: String?

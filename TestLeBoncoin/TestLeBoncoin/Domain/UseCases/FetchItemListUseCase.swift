@@ -59,7 +59,7 @@ final class FetchItemListUseCaseImpl: FetchItemListUseCase {
             description: item.iDescription,
             price: item.price,
             isUrgent: item.isUrgent,
-            category: categoryList?.first(where: { $0.id == item.categoryID })?.toDomain() ?? Category.unknown,
+            category: categoryList?.first(where: { $0.id == item.categoryID })?.toDomain() ?? ItemCategory.unknown,
             imageUrl: item.imagesURL.small ?? "",
             creationDate: item.creationDate,
             siret: item.siret

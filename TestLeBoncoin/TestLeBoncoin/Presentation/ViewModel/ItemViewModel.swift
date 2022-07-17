@@ -9,11 +9,10 @@ struct ItemViewModel: Equatable {
     let title: String
     let price: String
     let isUrgent: Bool
-    let categoryName: String
     let imageUrl: String
 }
 
-struct CategorySectionViewModel {
+struct CategorySectionViewModel: Equatable {
     let name: String
     let itemList: [ItemViewModel]
 }
@@ -24,7 +23,6 @@ extension Item {
             title: title,
             price: String(format: "%g €", price),
             isUrgent: isUrgent,
-            categoryName: category.name,
             imageUrl: imageUrl
         )
     }
@@ -32,8 +30,11 @@ extension Item {
 
 extension Array where Element == Item {
     func toCategorySectionViewModel() -> [CategorySectionViewModel] {
-        let itemList = map({ $0.toViewModel()})
-        let itemsGoupedByCategeroyName = Dictionary(grouping: itemList, by: { $0.categoryName }).map({ CategorySectionViewModel(name: $0, itemList: $1) })
+        let itemsGoupedByCategeroyName = Dictionary(grouping: self) { element in
+            element.category.name
+        }.map { categoryName, itemList in
+            CategorySectionViewModel(name: categoryName, itemList: itemList.map({ $0.toViewModel() }))
+        }
         return itemsGoupedByCategeroyName
     }
 }
