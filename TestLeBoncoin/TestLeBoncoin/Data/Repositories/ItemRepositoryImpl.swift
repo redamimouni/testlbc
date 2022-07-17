@@ -9,7 +9,10 @@ import Foundation
 
 class ItemRepositoryImpl: ItemRepository {
     func fetchItemList(completion: @escaping (Result<[ItemDTO], NetworkError>) -> Void) {
-        let request = URLRequest.urlRequestFrom(urlString: APIEndpoints.listing.rawValue)
+        guard let request = URLRequest.urlRequestFrom(urlString: APIEndpoints.listing.rawValue) else {
+            completion(.failure(.wrongUrlError))
+            return
+        }
         let task = URLSession.shared.dataTask(with: request, cachedResponse: true) { [weak self] data, response, error in
             if let _ = error {
                 completion(.failure(.httpRequestError))

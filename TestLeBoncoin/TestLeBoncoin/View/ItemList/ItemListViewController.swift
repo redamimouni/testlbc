@@ -10,8 +10,7 @@ import UIKit
 final class ItemListViewController: UIViewController, ItemListDelegate, Coordinated {
     // MARK: - Data
 
-    internal var listItemViewModel: [ItemViewModel] = []
-    internal var categoryList: [String] = []
+    internal var categorySectionViewModel: [CategorySectionViewModel] = []
 
     // MARK: - Dependencies
 
@@ -48,9 +47,8 @@ final class ItemListViewController: UIViewController, ItemListDelegate, Coordina
 
     // MARK: - Delegate
 
-    func displayItemList(items: [ItemViewModel], categories: [String]) {
-        listItemViewModel = items
-        categoryList = categories
+    func displayItemList(items: [CategorySectionViewModel]) {
+        categorySectionViewModel = items
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -76,7 +74,6 @@ final class ItemListViewController: UIViewController, ItemListDelegate, Coordina
     private func createTableView() -> UITableView {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.separatorInset = .zero
         tableView.separatorStyle = .singleLine
         tableView.showsVerticalScrollIndicator = false
         tableView.rowHeight = UITableView.automaticDimension

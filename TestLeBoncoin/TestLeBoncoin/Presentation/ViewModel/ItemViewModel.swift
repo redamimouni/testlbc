@@ -13,6 +13,11 @@ struct ItemViewModel: Equatable {
     let imageUrl: String
 }
 
+struct CategorySectionViewModel {
+    let name: String
+    let itemList: [ItemViewModel]
+}
+
 extension Item {
     func toViewModel() -> ItemViewModel {
         return ItemViewModel(
@@ -22,5 +27,13 @@ extension Item {
             categoryName: category.name,
             imageUrl: imageUrl
         )
+    }
+}
+
+extension Array where Element == Item {
+    func toCategorySectionViewModel() -> [CategorySectionViewModel] {
+        let itemList = map({ $0.toViewModel()})
+        let itemsGoupedByCategeroyName = Dictionary(grouping: itemList, by: { $0.categoryName }).map({ CategorySectionViewModel(name: $0, itemList: $1) })
+        return itemsGoupedByCategeroyName
     }
 }

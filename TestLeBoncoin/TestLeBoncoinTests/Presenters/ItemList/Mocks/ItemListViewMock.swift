@@ -16,7 +16,7 @@ final class ItemListMock<T>: NSObject, ItemListDelegate {
         super.init()
     }
 
-    func displayItemList(items: [ItemViewModel]) {
+    func displayItemList(items: ItemListViewModel) {
         testParameter.result(items as! T)
         testParameter.expectation.fulfill()
     }
