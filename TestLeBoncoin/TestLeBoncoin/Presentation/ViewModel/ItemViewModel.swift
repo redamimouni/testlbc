@@ -35,6 +35,6 @@ extension Array where Element == Item {
         }.map { categoryName, itemList in
             CategorySectionViewModel(name: categoryName, itemList: itemList.map({ $0.toViewModel() }))
         }
-        return itemsGoupedByCategeroyName
+        return itemsGoupedByCategeroyName.sorted(by: { $0.name < $1.name })
     }
 }

@@ -85,8 +85,8 @@ final class ItemViewCell: UITableViewCell {
 
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            leftImageView.widthAnchor.constraint(equalToConstant: 60),
-            leftImageView.heightAnchor.constraint(equalToConstant: 60),
+            leftImageView.widthAnchor.constraint(equalToConstant: .imageSize),
+            leftImageView.heightAnchor.constraint(equalToConstant: .imageSize),
             leftImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             leftImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .padding),
 
