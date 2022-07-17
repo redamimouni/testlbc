@@ -9,9 +9,9 @@ import Foundation
 @testable import TestLeBoncoin
 
 final class ItemRepositoryMock: ItemRepository {
-    var mockedResult: Result<[ItemDTO], NetworkError>!
+    var mockedResult: Result<ItemListDTO, NetworkError>!
 
-    func fetchItemList(completion: @escaping (Result<[ItemDTO], NetworkError>) -> Void) {
+    func fetchItemList(completion: @escaping (Result<ItemListDTO, NetworkError>) -> Void) {
         completion(mockedResult)
     }
 }

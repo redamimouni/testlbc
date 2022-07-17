@@ -8,7 +8,7 @@
 import Foundation
 
 class CategoryRepositoryImpl: CategoryRepository {
-    func fetchCategoryList(completion: @escaping (Result<[CategoryDTO], NetworkError>) -> Void) {
+    func fetchCategoryList(completion: @escaping (Result<CategoryListDTO, NetworkError>) -> Void) {
         guard let request = URLRequest.urlRequestFrom(urlString: APIEndpoints.categories.rawValue) else {
             completion(.failure(.wrongUrlError))
             return
@@ -27,7 +27,7 @@ class CategoryRepositoryImpl: CategoryRepository {
         task.resume()
     }
 
-    private func decodeEntityFromData(data: Data, completion: @escaping (Result<[CategoryDTO], NetworkError>) -> Void) {
+    private func decodeEntityFromData(data: Data, completion: @escaping (Result<CategoryListDTO, NetworkError>) -> Void) {
         do {
             let jsonFromData = try JSONDecoder().decode(CategoryListDTO.self, from: data)
             completion(.success(jsonFromData))
