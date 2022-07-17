@@ -72,7 +72,7 @@ final class ItemListViewController: UIViewController, ItemListDelegate, Coordina
     }
 
     private func createTableView() -> UITableView {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+        let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .singleLine
         tableView.showsVerticalScrollIndicator = false
