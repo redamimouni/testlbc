@@ -21,7 +21,7 @@ class ItemListPresenterTests: XCTestCase {
 
     func test_fetchItemList_shouldSuccess() {
         // Given
-        var result: [ItemViewModel] = []
+        var result: [CategorySectionViewModel] = []
         useCase.mockedResult = .success(Item.mocks)
         let testParameter = Expectation(
             expectation: expectation) {
@@ -35,9 +35,25 @@ class ItemListPresenterTests: XCTestCase {
         wait(for: [expectation], timeout: 2)
 
         // Then
-        XCTAssertEqual(result, [
-            ItemViewModel(title: "title", price: "1.2 €", isUrgent: true, image: UIImage()),
-            ItemViewModel(title: "second title", price: "14 €", isUrgent: false, image: UIImage())
+        XCTAssertEqual(result,[
+            CategorySectionViewModel(
+                name: "animals",
+                itemList: [ItemViewModel(
+                    title: "title",
+                    price: "1.2 €",
+                    isUrgent: true,
+                    imageUrl: "smallUrl"
+                )]
+            ),
+            CategorySectionViewModel(
+                name: "cars",
+                itemList: [ItemViewModel(
+                    title: "second title",
+                    price: "14 €",
+                    isUrgent: false,
+                    imageUrl: "smallUrl"
+                )]
+            )
         ])
     }
 

@@ -2,14 +2,15 @@ import Foundation
 import UIKit
 
 struct ItemViewModel: Equatable {
-    static func == (lhs: ItemViewModel, rhs: ItemViewModel) -> Bool {
-        return lhs.title == rhs.title && lhs.price == rhs.price && lhs.isUrgent == rhs.isUrgent
-    }
-
     let title: String
     let price: String
     let isUrgent: Bool
-    let image: UIImage
+    let imageUrl: String
+}
+
+struct CategorySectionViewModel: Equatable {
+    let name: String
+    let itemList: [ItemViewModel]
 }
 
 extension Item {
@@ -18,7 +19,18 @@ extension Item {
             title: title,
             price: String(format: "%g €", price),
             isUrgent: isUrgent,
-            image: UIImage(data: image) ?? UIImage(named: "imageNotFound")!
+            imageUrl: imageUrl
         )
+    }
+}
+
+extension Array where Element == Item {
+    func toCategorySectionViewModel() -> [CategorySectionViewModel] {
+        let itemsGoupedByCategeroyName = Dictionary(grouping: self) { element in
+            element.category.name
+        }.map { categoryName, itemList in
+            CategorySectionViewModel(name: categoryName, itemList: itemList.map({ $0.toViewModel() }))
+        }
+        return itemsGoupedByCategeroyName.sorted(by: { $0.name < $1.name })
     }
 }

@@ -8,8 +8,11 @@
 import Foundation
 
 class ItemRepositoryImpl: ItemRepository {
-    func fetchItemList(completion: @escaping (Result<[ItemDTO], NetworkError>) -> Void) {
-        let request = URLRequest.urlRequestFrom(urlString: APIEndpoints.listing.rawValue)
+    func fetchItemList(completion: @escaping (Result<ItemListDTO, NetworkError>) -> Void) {
+        guard let request = URLRequest.urlRequestFrom(urlString: APIEndpoints.listing.rawValue) else {
+            completion(.failure(.wrongUrlError))
+            return
+        }
         let task = URLSession.shared.dataTask(with: request, cachedResponse: true) { [weak self] data, response, error in
             if let _ = error {
                 completion(.failure(.httpRequestError))
@@ -24,7 +27,7 @@ class ItemRepositoryImpl: ItemRepository {
         task.resume()
     }
 
-    private func decodeEntityFromData(data: Data, completion: @escaping (Result<[ItemDTO], NetworkError>) -> Void) {
+    private func decodeEntityFromData(data: Data, completion: @escaping (Result<ItemListDTO, NetworkError>) -> Void) {
         do {
             let jsonFromData = try JSONDecoder().decode(ItemListDTO.self, from: data)
             completion(.success(jsonFromData))

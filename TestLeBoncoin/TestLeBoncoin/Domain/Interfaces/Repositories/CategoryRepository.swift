@@ -8,5 +8,5 @@
 import Foundation
 
 protocol CategoryRepository {
-    func fetchCategoryList(completion: @escaping(Result<[CategoryDTO], NetworkError>) -> Void)
+    func fetchCategoryList(completion: @escaping(Result<CategoryListDTO, NetworkError>) -> Void)
 }

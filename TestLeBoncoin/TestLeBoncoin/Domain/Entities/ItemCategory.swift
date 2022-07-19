@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Category: Equatable {
+struct ItemCategory: Equatable {
     let id: Int
     let name: String
 
-    static var unknown: Category {
-        return Category(id: 9999, name: "Unknown")
+    static var unknown: ItemCategory {
+        return ItemCategory(id: 9999, name: "Unknown")
     }
 }

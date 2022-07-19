@@ -25,9 +25,11 @@ extension URLSession {
 }
 
 extension URLRequest {
-    static func urlRequestFrom(urlString: String) -> URLRequest {
-        let url = URL(string: urlString)
-        var request = URLRequest(url: url!)
+    static func urlRequestFrom(urlString: String) -> URLRequest? {
+        guard let url = URL(string: urlString) else {
+            return nil
+        }
+        var request = URLRequest(url: url)
         request.httpMethod = "GET"
         return request
     }

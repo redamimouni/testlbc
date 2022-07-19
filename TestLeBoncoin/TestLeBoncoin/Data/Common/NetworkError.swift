@@ -11,4 +11,5 @@ enum NetworkError: Error {
     case httpRequestError
     case errorDataFetch
     case parsingError
+    case wrongUrlError
 }
