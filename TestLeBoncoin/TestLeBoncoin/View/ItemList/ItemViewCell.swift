@@ -63,7 +63,23 @@ final class ItemViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: Reusable
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        resetCell()
+    }
+
     // MARK: - Private
+
+    private func resetCell() {
+        leftImageView.image = nil
+        priceLabel.text = ""
+        isUrgentLabel.isHidden = true
+        titleLabel.text = ""
+    }
+
+    // MARK: - Configure
 
     func fill(with viewModel: ItemViewModel, presenter: ItemListPresenter) {
         titleLabel.text = viewModel.title
