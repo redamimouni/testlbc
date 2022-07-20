@@ -9,13 +9,9 @@ import Foundation
 import UIKit
 
 final class ItemViewCell: UITableViewCell {
-    // MARK: - Default
-
-    private let defaultImage = UIImage(named: "imageNotFound")
-
     // MARK: - Subviews
 
-    lazy var titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
@@ -24,7 +20,7 @@ final class ItemViewCell: UITableViewCell {
         return label
     }()
 
-    lazy var priceLabel: UILabel = {
+    private lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
@@ -32,7 +28,7 @@ final class ItemViewCell: UITableViewCell {
         return label
     }()
 
-    lazy var isUrgentLabel: UILabel = {
+    private lazy var isUrgentLabel: UILabel = {
         let label = UILabel()
         label.text = "URGENT"
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -42,11 +38,32 @@ final class ItemViewCell: UITableViewCell {
         return label
     }()
 
-    lazy var leftImageView: UIImageView = {
+    private lazy var loader: UIActivityIndicatorView = {
+        let loader = UIActivityIndicatorView(style: .medium)
+        loader.translatesAutoresizingMaskIntoConstraints = false
+        loader.startAnimating()
+        return loader
+    }()
+
+    private lazy var leftImageView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleAspectFit
         return view
     }()
+
+    // MARK: - Observer
+
+    var imageData: Data? {
+        didSet {
+            loader.stopAnimating()
+            guard let data = imageData else {
+                leftImageView.image = UIImage(named: "imageNotFound")
+                return
+            }
+            leftImageView.image = UIImage(data: data)
+        }
+    }
 
     // MARK: - Initialization
 
@@ -54,6 +71,7 @@ final class ItemViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(titleLabel)
         contentView.addSubview(leftImageView)
+        leftImageView.addSubview(loader)
         contentView.addSubview(priceLabel)
         contentView.addSubview(isUrgentLabel)
         setConstraints()
@@ -81,20 +99,10 @@ final class ItemViewCell: UITableViewCell {
 
     // MARK: - Configure
 
-    func fill(with viewModel: ItemViewModel, presenter: ItemListPresenter) {
+    func fill(with viewModel: ItemViewModel) {
         titleLabel.text = viewModel.title
         priceLabel.text = viewModel.price
         isUrgentLabel.isHidden = !viewModel.isUrgent
-        presenter.loadImage(with: viewModel.imageUrl) { imageData in
-            DispatchQueue.main.async {
-                guard let data = imageData else {
-                    self.leftImageView.image = self.defaultImage
-                    return
-                }
-                let image = UIImage(data: data)
-                self.leftImageView.image = image
-            }
-        }
     }
 
     // MARK: - Constraints
@@ -105,6 +113,9 @@ final class ItemViewCell: UITableViewCell {
             leftImageView.heightAnchor.constraint(equalToConstant: .imageSize),
             leftImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             leftImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .padding),
+
+            loader.centerXAnchor.constraint(equalTo: leftImageView.centerXAnchor),
+            loader.centerYAnchor.constraint(equalTo: leftImageView.centerYAnchor),
 
             titleLabel.leadingAnchor.constraint(equalTo: leftImageView.trailingAnchor, constant: .padding),
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .paddingSmall),

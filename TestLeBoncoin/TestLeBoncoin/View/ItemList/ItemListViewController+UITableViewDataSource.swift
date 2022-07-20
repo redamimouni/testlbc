@@ -18,7 +18,12 @@ extension ItemListViewController: UITableViewDataSource {
         let category = categorySectionViewModel[indexPath.section]
         let viewModel = category.itemList[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for: indexPath) as! ItemViewCell
-        cell.fill(with: viewModel, presenter: presenter)
+        presenter.loadImage(with: viewModel.imageUrl) { result in
+            DispatchQueue.main.async {
+                cell.imageData = result
+            }
+        }
+        cell.fill(with: viewModel)
         return cell
     }
 
