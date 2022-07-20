@@ -1,7 +1,8 @@
 # test Leboncoin
 
 Ceci est un projet pour le test technique pour Leboncoin.
-Ce readme décrit l'avancement du test technique.
+Ce readme décrit l'avancement du test technique [[technical-test] iOS.pdf](https://github.com/redamimouni/testlbc/files/9147088/technical-test.iOS.pdf)
+.
 
 ### Architecture
 
